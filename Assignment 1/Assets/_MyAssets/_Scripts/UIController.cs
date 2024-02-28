@@ -16,6 +16,6 @@ public class UIManager : MonoBehaviour
 
     public void onOpenSettings() 
     {
-        Debug.Log("open setting");
+        Debug.Log("open setting")
     }
 }

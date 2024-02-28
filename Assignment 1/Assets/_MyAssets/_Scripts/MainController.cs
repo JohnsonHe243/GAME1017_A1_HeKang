@@ -5,23 +5,14 @@ using TMPro;
 
 public class MainController : MonoBehaviour
 {
-    public static MainController instance;
-
     private void Awake()
     {
-        //// Instanace creation and enforcement of only one objects.
-        //if (MainController.Instance == null)
-        //{
-        //    SoundManager.Instance = this;
-        //    DontDestroyOnLoad(this);
-        //    Instantiate(MainController.instance);
-
-        //}
-        //else // If instance already exists and points to an instance of MainController.
-        //{
-        //    Debug.Log("Goodbye cruel world!");
-        //    Destroy(gameObject); // Destroy the new instance, so only the original remains.
-        //}
+        GameObject[] gameController = GameObject.FindGameObjectsWithTag("MainController");
+        if (gameController.Length > 1)
+        {
+            Destroy(this.gameObject);
+        }
+        DontDestroyOnLoad(this.gameObject);
     }
 
     void Start()
@@ -30,7 +21,6 @@ public class MainController : MonoBehaviour
 
         //SoundManager.Instance.AddSound("", Resources.Load<AudioClip>(""), SoundManager.SoundType.SOUND_MUSIC);
 
-        // ADD DONT DESTROY ON LOAD!!!
     }
 
 
