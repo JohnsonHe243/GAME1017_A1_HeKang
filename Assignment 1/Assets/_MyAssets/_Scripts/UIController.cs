@@ -1,12 +1,10 @@
-using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections;
 
-public class UIManager : MonoBehaviour
+public class UIController : MonoBehaviour
 {
-    [SerializeField] private Text scoreLabel; // for text obj
-
-    // Start is called before the first frame update
+    [SerializeField] public Text scoreLabel; // for text obj
 
     // Update is called once per frame
     void Update()
@@ -14,8 +12,8 @@ public class UIManager : MonoBehaviour
         scoreLabel.text = Time.realtimeSinceStartup.ToString();
     }
 
-    public void onOpenSettings() 
+    public void onOpenSettings()
     {
-        Debug.Log("open setting")
+        Debug.Log("open setting");
     }
 }
