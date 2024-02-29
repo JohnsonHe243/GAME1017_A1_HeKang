@@ -4,15 +4,9 @@ using UnityEngine.UI;
 
 public class SoundManager : MonoBehaviour
 {
-    [SerializeField] private Slider sfxSlider;
-    [SerializeField] private Slider musicSlider;
-    [SerializeField] private Slider masterSlider;
-
     private float sfxVolume = 1.0f;
     private float musicVolume = 1.0f;
     private float masterVolume = 1.0f;
-    private float stereoPanning = 0.0f;
-
     public enum SoundType
     {
         SOUND_SFX,
@@ -20,32 +14,13 @@ public class SoundManager : MonoBehaviour
     }
 
     // Define the reference value property that will grant access to the class.
-    public static SoundManager Instance {  get; private set; }
+    public static SoundManager Instance { get; private set; }
 
     private Dictionary<string, AudioClip> sfxDictionary = new Dictionary<string, AudioClip>();
     private Dictionary<string, AudioClip> musicDictionary = new Dictionary<string, AudioClip>();
 
     private AudioSource sfxSource;
     private AudioSource musicSource;
-    
-
-    private void Awake()
-    {
-        //// Instanace creation and enforcement of only one objects.
-        //if (Instance == null)
-        //{
-        //    Instance = this;
-        //    DontDestroyOnLoad(this);
-        //    Initialize();
-
-        //}
-        //else // If instance already exists and points to an instance of SoundManager.
-        //{
-        //    Debug.Log("Goodbye cruel world!");
-        //    Destroy(gameObject); // Destroy the new instance, so only the original remains.
-        //}
-
-    }
 
     // Initialize the SoundManager. 
     private void Initialize()
@@ -72,13 +47,6 @@ public class SoundManager : MonoBehaviour
         masterVolume = value;
         sfxSource.volume = sfxVolume * masterVolume;
         musicSource.volume = musicVolume * masterVolume;
-    }
-
-    public void SetStereoPanning(float value)
-    {
-        stereoPanning = value;
-        sfxSource.panStereo = stereoPanning;
-        musicSource.panStereo = stereoPanning;
     }
 
     // Add a sound to the dictionary.
