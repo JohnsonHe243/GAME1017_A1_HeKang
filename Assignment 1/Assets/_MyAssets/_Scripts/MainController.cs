@@ -7,7 +7,6 @@ using TMPro;
 public class MainController : MonoBehaviour
 {
     [SerializeField] public Text scoreLabel; // for text obj
-    [SerializeField] private SettingsPopup settingsPopup;
 
     private void Awake()
     {
@@ -22,17 +21,12 @@ public class MainController : MonoBehaviour
     void Start()
     {
         //SoundManager.Instance.AddSound("", Resources.Load<AudioClip>(""), SoundManager.SoundType.SOUND_SFX);
-        //SoundManager.Instance.AddSound("", Resources.Load<AudioClip>(""), SoundManager.SoundType.SOUND_MUSIC);
-        settingsPopup.Close();
+        SoundManager.Instance.AddSound("TitleMusic", Resources.Load<AudioClip>("titleMusic"), SoundManager.SoundType.SOUND_MUSIC);
     }
 
     void Update()
     {
         scoreLabel.text = Time.realtimeSinceStartup.ToString();
-    }
-    public void onOpenSettings()
-    {
-        settingsPopup.Open();
     }
 
     public void PlaySFX(string soundKey)
