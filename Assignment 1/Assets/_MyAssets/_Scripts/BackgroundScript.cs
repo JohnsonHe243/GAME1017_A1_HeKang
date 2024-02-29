@@ -26,6 +26,7 @@ public class BackgroundScript : MonoBehaviour
             for (int i = 0; i < backgrounds.Length; i++)
             {
                 backgrounds[i].transform.position = new Vector3(startPositions[i], 0f, 0f);
+
             }
         }
     }
