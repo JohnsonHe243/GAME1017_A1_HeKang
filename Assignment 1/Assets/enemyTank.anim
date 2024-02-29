@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Tank
+  m_Name: enemyTank
   serializedVersion: 7
   m_Legacy: 0
   m_Compressed: 0
@@ -21,9 +21,9 @@ AnimationClip:
   - serializedVersion: 2
     curve:
     - time: 0
-      value: {fileID: 1047615546, guid: afe6771e3b45bf64d8c7f56dc2c5065f, type: 3}
+      value: {fileID: 5903054, guid: b6cf3105341914a4e928d199c582dcfd, type: 3}
     - time: 0.083333336
-      value: {fileID: -815742508, guid: afe6771e3b45bf64d8c7f56dc2c5065f, type: 3}
+      value: {fileID: 1629411842, guid: b6cf3105341914a4e928d199c582dcfd, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -46,8 +46,8 @@ AnimationClip:
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     pptrCurveMapping:
-    - {fileID: 1047615546, guid: afe6771e3b45bf64d8c7f56dc2c5065f, type: 3}
-    - {fileID: -815742508, guid: afe6771e3b45bf64d8c7f56dc2c5065f, type: 3}
+    - {fileID: 5903054, guid: b6cf3105341914a4e928d199c582dcfd, type: 3}
+    - {fileID: 1629411842, guid: b6cf3105341914a4e928d199c582dcfd, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}

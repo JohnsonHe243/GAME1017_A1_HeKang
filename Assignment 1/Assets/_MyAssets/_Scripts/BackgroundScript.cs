@@ -21,11 +21,12 @@ public class BackgroundScript : MonoBehaviour
         {
             background.Translate(moveSpeed * Time.deltaTime, 0.0f, 0.0f);
         }
-        if (backgrounds[0].transform.position.x <= -13.312f)
+        if (backgrounds[0].transform.position.x <= -24.39f)
         {
             for (int i = 0; i < backgrounds.Length; i++)
             {
-                backgrounds[i].transform.position = new Vector3(startPositions[i], 0f, 0f);
+                backgrounds[i].transform.position = new Vector3(0.95f + i * 25.34f, 0f, 0f);
+
 
             }
         }
