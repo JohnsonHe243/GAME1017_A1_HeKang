@@ -231,6 +231,7 @@ MonoBehaviour:
   - {fileID: 1552068553}
   - {fileID: 1235853498}
   moveSpeed: -10
+  settingsPopup: {fileID: 2083573914}
 --- !u!4 &107601959
 Transform:
   m_ObjectHideFlags: 0
