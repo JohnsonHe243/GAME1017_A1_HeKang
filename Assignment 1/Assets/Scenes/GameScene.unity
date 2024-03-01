@@ -230,17 +230,8 @@ MonoBehaviour:
   backgrounds:
   - {fileID: 1552068553}
   - {fileID: 1235853498}
-<<<<<<< HEAD
   moveSpeed: -10
   settingsPopup: {fileID: 2083573914}
-=======
-<<<<<<< Updated upstream
-  moveSpeed: -2
-=======
-  moveSpeed: -10
-  settingsPopup: {fileID: 0}
->>>>>>> Stashed changes
->>>>>>> Heechan
 --- !u!4 &107601959
 Transform:
   m_ObjectHideFlags: 0
@@ -1246,7 +1237,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 630f732f368b5d243aa8c88ff130ed6f, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 6b539aea8b9588a4691191e77b4d3fcb, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.5
   m_Pitch: 0.75
