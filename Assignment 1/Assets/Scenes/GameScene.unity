@@ -942,6 +942,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8068327820363236107, guid: 2b846d81e7bc63d47862a67fa62475fa, type: 3}
     - target: {fileID: 3324527940845222707, guid: 7bb1fc0d1ff7aad4ea75ba54d176a5fc, type: 3}
+      propertyPath: missilePrefab
+      value: 
+      objectReference: {fileID: 6509826094471832535, guid: 381eca7443a323c479cbc2a2dafda4ab, type: 3}
+    - target: {fileID: 3324527940845222707, guid: 7bb1fc0d1ff7aad4ea75ba54d176a5fc, type: 3}
       propertyPath: clips.Array.size
       value: 2
       objectReference: {fileID: 0}

@@ -8,6 +8,7 @@ public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] float moveSpeed;
     [SerializeField] GameObject bulletPrefab;
+    [SerializeField] GameObject missilePrefab;
     [SerializeField] TMP_Text scoreText;
     [SerializeField] GameObject[] hitSprites;
     [SerializeField] GameObject splosion;
@@ -40,6 +41,18 @@ public class PlayerMovement : MonoBehaviour
         {
             GameObject bulletInst = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
             bulletInst.GetComponent<PlayerBulletScript>().pm = this; // this is PlayerMovement script instance.
+            //aud.clip = clips[0]; // Load a clip.
+            //aud.Play();
+            aud.PlayOneShot(clips[0]); // Allows layering of the same SFX.
+        }
+        if (isAlive == false)
+        {
+            GameOver();
+        }
+        if (Input.GetMouseButtonDown(1))
+        {
+            GameObject missileInst = Instantiate(missilePrefab, transform.position, Quaternion.identity);
+            missileInst.GetComponent<PlayerBulletScript>().pm = this; // this is PlayerMovement script instance.
             //aud.clip = clips[0]; // Load a clip.
             //aud.Play();
             aud.PlayOneShot(clips[0]); // Allows layering of the same SFX.
