@@ -6,8 +6,6 @@ using TMPro;
 
 public class MainController : MonoBehaviour
 {
-    [SerializeField] public Text scoreLabel; // for text obj
-
     private void Awake()
     {
         GameObject[] gameController = GameObject.FindGameObjectsWithTag("MainController");
@@ -22,11 +20,6 @@ public class MainController : MonoBehaviour
     {
         //SoundManager.Instance.AddSound("", Resources.Load<AudioClip>(""), SoundManager.SoundType.SOUND_SFX);
         SoundManager.Instance.AddSound("TitleMusic", Resources.Load<AudioClip>("titleMusic"), SoundManager.SoundType.SOUND_MUSIC);
-    }
-
-    void Update()
-    {
-        scoreLabel.text = Time.realtimeSinceStartup.ToString();
     }
 
     public void PlaySFX(string soundKey)
