@@ -931,7 +931,7 @@ PrefabInstance:
       objectReference: {fileID: 5291876248824348359, guid: 80a5447a68b303a43aa7a7ef06beb3c6, type: 3}
     - target: {fileID: 3324527940845222707, guid: 7bb1fc0d1ff7aad4ea75ba54d176a5fc, type: 3}
       propertyPath: moveSpeed
-      value: 5
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 3324527940845222707, guid: 7bb1fc0d1ff7aad4ea75ba54d176a5fc, type: 3}
       propertyPath: scoreText
@@ -979,11 +979,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6839929503470490400, guid: 7bb1fc0d1ff7aad4ea75ba54d176a5fc, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.323883
+      value: -4.64
       objectReference: {fileID: 0}
     - target: {fileID: 6839929503470490400, guid: 7bb1fc0d1ff7aad4ea75ba54d176a5fc, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.19145346
+      value: 0.12
       objectReference: {fileID: 0}
     - target: {fileID: 6839929503470490400, guid: 7bb1fc0d1ff7aad4ea75ba54d176a5fc, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1059,6 +1059,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 7607807167040859404, guid: 7bb1fc0d1ff7aad4ea75ba54d176a5fc, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1331960114}
+    - targetCorrespondingSourceObject: {fileID: 7607807167040859404, guid: 7bb1fc0d1ff7aad4ea75ba54d176a5fc, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1331960118}
   m_SourcePrefab: {fileID: 100100000, guid: 7bb1fc0d1ff7aad4ea75ba54d176a5fc, type: 3}
 --- !u!1 &1036536905
 GameObject:
@@ -1090,7 +1093,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyPrefab: {fileID: 3367412562492352368, guid: 55d1ed7d535b73b4fbed215a23b40d69, type: 3}
-  spawnInterval: 2.5
+  spawnInterval: 5
   activeEnemies: []
   enemyPool: []
 --- !u!4 &1036536907
@@ -1325,6 +1328,51 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6839929503470490400, guid: 7bb1fc0d1ff7aad4ea75ba54d176a5fc, type: 3}
   m_PrefabInstance: {fileID: 922170216}
   m_PrefabAsset: {fileID: 0}
+--- !u!61 &1331960118
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1331960106}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -2.2588682, y: -0.047722578}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1.7211409, y: 1.0106049}
+  m_EdgeRadius: 0
 --- !u!1 &1334378478
 GameObject:
   m_ObjectHideFlags: 0
@@ -1382,7 +1430,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '5
+  m_text: '0
 
 '
   m_isRightToLeft: 0
@@ -1575,7 +1623,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyPrefab: {fileID: 3178218869859950911, guid: 3feb90126356b5b49a08116a09c7d70f, type: 3}
-  spawnInterval: 2
+  spawnInterval: 4
   activeEnemies: []
   enemyPool: []
 --- !u!4 &1753094698
