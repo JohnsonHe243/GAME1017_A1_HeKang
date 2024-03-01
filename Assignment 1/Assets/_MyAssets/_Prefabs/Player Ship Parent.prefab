@@ -48,7 +48,11 @@ MonoBehaviour:
   moveSpeed: 4
   bulletPrefab: {fileID: 0}
   scoreText: {fileID: 0}
-  hitSprites: []
+  hitSprites:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   splosion: {fileID: 5291876248824348359, guid: 80a5447a68b303a43aa7a7ef06beb3c6, type: 3}
   sprite: {fileID: 0}
   clips: []

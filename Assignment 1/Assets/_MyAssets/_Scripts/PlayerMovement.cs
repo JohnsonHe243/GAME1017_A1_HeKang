@@ -44,6 +44,10 @@ public class PlayerMovement : MonoBehaviour
             //aud.Play();
             aud.PlayOneShot(clips[0]); // Allows layering of the same SFX.
         }
+        if (isAlive == false)
+        {
+            GameOver();
+        }
     }
 
     public void AddKill(int points = 100)
@@ -96,6 +100,6 @@ public class PlayerMovement : MonoBehaviour
 
     void GameOver()
     {
-        // Removed from demo.
+        SceneLoader.LoadSceneByIndex(2);   
     }
 }
