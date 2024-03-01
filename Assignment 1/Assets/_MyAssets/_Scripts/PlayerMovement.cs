@@ -92,7 +92,7 @@ public class PlayerMovement : MonoBehaviour
                 AddKill(1000);
                 GameObject splosionInst = Instantiate(splosion, collider.transform.position, Quaternion.identity);
                 Destroy(splosionInst, 0.5f);
-                collider.transform.position = new Vector3(-8f, 0, 0);
+                collider.transform.position = new Vector3(-11f, 0, 0);
             }
             hitSprites[hits--].SetActive(false);
         }

@@ -41,7 +41,7 @@ public class PlayerBulletScript : MonoBehaviour
             Destroy(this.gameObject); // This destroys bullet.
             GameObject splosionInst = Instantiate(splosion, other.transform.position, Quaternion.identity);
             Destroy(splosionInst, 0.5f);
-            other.transform.position = new Vector3(-8f, 0, 0);
+            other.transform.position = new Vector3(-12f, 0, 0);
 
         }
     }

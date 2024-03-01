@@ -19,7 +19,7 @@ public class EnemySpawnScript : MonoBehaviour
     {
         for (int i = 0; i < activeEnemies.Count; i++)
         {
-            if (activeEnemies[i].transform.position.x <= -7.5f) // if the enemy is off-screen.
+            if (activeEnemies[i].transform.position.x <= -13.5f) // if the enemy is off-screen.
             {
                 // Deactivate the enemy's script.
                 activeEnemies[i].GetComponent<EnemyScript>().enabled = false;
