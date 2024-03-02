@@ -7,6 +7,8 @@ public class SoundManager : MonoBehaviour
     private float sfxVolume = 1.0f;
     private float musicVolume = 1.0f;
     private float masterVolume = 1.0f;
+    private float stereoPanning = 0.0f;
+
     public enum SoundType
     {
         SOUND_SFX,
@@ -21,6 +23,25 @@ public class SoundManager : MonoBehaviour
 
     private AudioSource sfxSource;
     private AudioSource musicSource;
+
+
+    private void Awake()
+    {
+        // Instanace creation and enforcement of only one objects.
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(this);
+            Initialize();
+
+        }
+        else // If instance already exists and points to an instance of SoundManager.
+        {
+            Debug.Log("Goodbye cruel world!");
+            Destroy(gameObject); // Destroy the new instance, so only the original remains.
+        }
+
+    }
 
     // Initialize the SoundManager. 
     private void Initialize()
@@ -47,6 +68,13 @@ public class SoundManager : MonoBehaviour
         masterVolume = value;
         sfxSource.volume = sfxVolume * masterVolume;
         musicSource.volume = musicVolume * masterVolume;
+    }
+
+    public void SetStereoPanning(float value)
+    {
+        stereoPanning = value;
+        sfxSource.panStereo = stereoPanning;
+        musicSource.panStereo = stereoPanning;
     }
 
     // Add a sound to the dictionary.

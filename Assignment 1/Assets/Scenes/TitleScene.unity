@@ -1715,6 +1715,14 @@ PrefabInstance:
       value: MainController
       objectReference: {fileID: 0}
     - target: {fileID: 6773724642982108289, guid: 5dc1bbe14d52c9e499a9a68739c867f6, type: 3}
+      propertyPath: date
+      value: 
+      objectReference: {fileID: 5984854485358536440, guid: 857c2e148f98ee848a7965d0745f493c, type: 3}
+    - target: {fileID: 6773724642982108289, guid: 5dc1bbe14d52c9e499a9a68739c867f6, type: 3}
+      propertyPath: score
+      value: 
+      objectReference: {fileID: 4758209237615858503, guid: 3cc9531b643a7414e9c4bf65f03fdaec, type: 3}
+    - target: {fileID: 6773724642982108289, guid: 5dc1bbe14d52c9e499a9a68739c867f6, type: 3}
       propertyPath: settingsPopup
       value: 
       objectReference: {fileID: 2137319879}

@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 using System;
 using System.IO;
 using System.Xml.Serialization;
+using UnityEditor.Experimental.GraphView;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -18,11 +19,12 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] GameObject sprite;
     [SerializeField] AudioClip[] clips;
     private AudioSource aud;
-    private int score = 0;
+    public int score = 0;
     private int hits = 3;
-    private bool isAlive = true;
+    public bool isAlive = true;
+    public int finalScore;
 
-    public UIManager UI;
+    public static PlayerMovement Instance { get; private set; }
 
     void Start()
     {
@@ -64,8 +66,7 @@ public class PlayerMovement : MonoBehaviour
         }
         if (isAlive == false)
         {
-            string date = GetCurrentDate();
-            UI.SerializeToXml(date, score);
+            finalScore = score;
             GameOver();
         }
     }
@@ -117,7 +118,7 @@ public class PlayerMovement : MonoBehaviour
             hitSprites[hits--].SetActive(false);
         }
     }
-    string GetCurrentDate()
+    public string GetCurrentDate()
     {
         return DateTime.Now.ToString("yyyy-MM-dd");
     }

@@ -1,13 +1,10 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Xml.Serialization;
 using UnityEngine;
-using UnityEngine.UIElements;
-using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 [XmlRoot("Scores")]
 public class HighScores
@@ -40,23 +37,44 @@ public class UIManager : MonoBehaviour
     [SerializeField] public SettingsPopup settingsPopup;
     [SerializeField] public TMP_Text score;
     [SerializeField] public TMP_Text date;
-    private const string xmlFilePath = "Assets/Scores.xml";
+    int sceneIndex;
+
+    public static UIManager Instance { get; private set; }
 
     private void Start()
     {
-        settingsPopup.Close();
-        DisplayScores();
+        sceneIndex = SceneManager.GetActiveScene().buildIndex;
+        if (SceneManager.GetActiveScene().buildIndex == 0 || SceneManager.GetActiveScene().buildIndex == 1)
+        {
+            settingsPopup.Close();
+        }
+        if (SceneManager.GetActiveScene().buildIndex == 2)
+        {
+            DisplayScores();
+        }
+
+
+    }
+    private void Update()
+    {
+        if (sceneIndex == 1 && PlayerMovement.Instance.isAlive == false)
+        {
+            SerializeToXml();
+        }
     }
 
-    public void SerializeToXml(string date, int score)
+    public void SerializeToXml()
     {
         HighScores highScores = DeSerializeFromXml();
-        highScores.Scores.Add(new ScoreEntry(date, score));
+        highScores.Scores.Add(new ScoreEntry(PlayerMovement.Instance.GetCurrentDate(), PlayerMovement.Instance.finalScore));
         highScores.Scores = highScores.Scores.OrderByDescending(s => s.Value).ToList();
         highScores.Scores = highScores.Scores.Take(7).ToList();
         var serializer = new XmlSerializer(typeof(HighScores));
 
-        using (StreamWriter streamWriter = new StreamWriter("Assets/Scores.xml"))
+        // Use Application.persistentDataPath to get a path that works on all platforms
+        string filePath = Path.Combine(Application.persistentDataPath, "Scores.xml");
+
+        using (StreamWriter streamWriter = new StreamWriter(filePath))
         {
             serializer.Serialize(streamWriter, highScores);
         }
@@ -76,14 +94,21 @@ public class UIManager : MonoBehaviour
     HighScores DeSerializeFromXml()
     {
         XmlSerializer serializer = new XmlSerializer(typeof(HighScores));
-        // Deserialize the GameData from XML.
-        using (StreamReader streamReader = new StreamReader("Assets/Scores.xml"))
+
+        // Use Application.persistentDataPath to get a path that works on all platforms
+        string filePath = Path.Combine(Application.persistentDataPath, "Scores.xml");
+
+        if (File.Exists(filePath))
         {
-            return (HighScores)serializer.Deserialize(streamReader);
+            using (StreamReader streamReader = new StreamReader(filePath))
+            {
+                return (HighScores)serializer.Deserialize(streamReader);
+            }
+        }
+        else
+        {
+            // If the file doesn't exist, return a new instance of HighScores
+            return new HighScores();
         }
     }
-
-
-
-
 }
