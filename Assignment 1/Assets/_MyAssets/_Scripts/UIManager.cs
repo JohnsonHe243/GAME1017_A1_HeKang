@@ -1,54 +1,89 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Xml.Serialization;
 using UnityEngine;
 using UnityEngine.UIElements;
+using UnityEngine.UI;
+using TMPro;
+
+[XmlRoot("Scores")]
+public class HighScores
+{
+    [XmlArray("ScoreList")]
+    [XmlArrayItem("ScoreEntry")]
+    public List<ScoreEntry> Scores;
+    public HighScores()
+    {
+        Scores = new List<ScoreEntry>();
+    }
+}
+
+public class ScoreEntry
+{
+    [XmlAttribute("Date")]
+    public string Date;
+    [XmlAttribute("Value")]
+    public int Value;
+    public ScoreEntry() { }
+    public ScoreEntry(string date, int value)
+    {
+        Date = date;
+        Value = value;
+    }
+}
 
 public class UIManager : MonoBehaviour
 {
-    private GameData gameData;
-    [SerializeField] private SettingsPopup settingsPopup;
+    [SerializeField] public SettingsPopup settingsPopup;
+    [SerializeField] public TMP_Text score;
+    [SerializeField] public TMP_Text date;
+    private const string xmlFilePath = "Assets/Scores.xml";
+
     private void Start()
     {
-        gameData = new GameData();
         settingsPopup.Close();
-
-        if (File.Exists("gameData.xml"))
-        {
-            // Deserialze the XML file to the gameData.
-            gameData = DeserializeFromXml();
-            // Update the kill count UI, access the set kill count method of enemy spawner
-
-        }
+        DisplayScores();
     }
 
-    public class GameData
+    public void SerializeToXml(string date, int score)
     {
-        public int killCount;
-        public GameData()
+        HighScores highScores = DeSerializeFromXml();
+        highScores.Scores.Add(new ScoreEntry(date, score));
+        highScores.Scores = highScores.Scores.OrderByDescending(s => s.Value).ToList();
+        highScores.Scores = highScores.Scores.Take(7).ToList();
+        var serializer = new XmlSerializer(typeof(HighScores));
+
+        using (StreamWriter streamWriter = new StreamWriter("Assets/Scores.xml"))
         {
-            killCount = 0;
+            serializer.Serialize(streamWriter, highScores);
         }
     }
 
-    private GameData DeserializeFromXml()
-    {   // From xml
-        // Create an XmlSerializer for the GameData type.
-        XmlSerializer serializer = new XmlSerializer(typeof(GameData));
+    public void DisplayScores()
+    {
+        HighScores highScores = DeSerializeFromXml();
+        foreach (var scoreEntry in highScores.Scores)
+        {
+            date.text += $"{scoreEntry.Date}\n";
+            score.text += $"{scoreEntry.Value}\n";
+        }
+    }
+
+
+    HighScores DeSerializeFromXml()
+    {
+        XmlSerializer serializer = new XmlSerializer(typeof(HighScores));
         // Deserialize the GameData from XML.
-        using (StreamReader streamReader = new StreamReader("gameData.xml"))
+        using (StreamReader streamReader = new StreamReader("Assets/Scores.xml"))
         {
-            return (GameData)serializer.Deserialize(streamReader);
+            return (HighScores)serializer.Deserialize(streamReader);
         }
     }
 
-    private void DeleteFile()
-    {
-        if (File.Exists("gameData.xml"))
-        {
-            File.Delete("gameData.xml");
-            Debug.Log("XML file deleted.");
-        }
-    }
+
+
+
 }

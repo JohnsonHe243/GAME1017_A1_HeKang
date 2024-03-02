@@ -922,6 +922,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3324527940845222707, guid: 7bb1fc0d1ff7aad4ea75ba54d176a5fc, type: 3}
+      propertyPath: UI
+      value: 
+      objectReference: {fileID: 1365388750179557017, guid: 8bbc7a4189ddb9e4fa66041dc5f858f3, type: 3}
+    - target: {fileID: 3324527940845222707, guid: 7bb1fc0d1ff7aad4ea75ba54d176a5fc, type: 3}
       propertyPath: sprite
       value: 
       objectReference: {fileID: 594724267}

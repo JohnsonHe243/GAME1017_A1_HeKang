@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
+using System;
+using System.IO;
+using System.Xml.Serialization;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -18,7 +21,9 @@ public class PlayerMovement : MonoBehaviour
     private int score = 0;
     private int hits = 3;
     private bool isAlive = true;
-    
+
+    public UIManager UI;
+
     void Start()
     {
         scoreText.text = "SCORE: 0";
@@ -59,6 +64,8 @@ public class PlayerMovement : MonoBehaviour
         }
         if (isAlive == false)
         {
+            string date = GetCurrentDate();
+            UI.SerializeToXml(date, score);
             GameOver();
         }
     }
@@ -110,9 +117,13 @@ public class PlayerMovement : MonoBehaviour
             hitSprites[hits--].SetActive(false);
         }
     }
-
+    string GetCurrentDate()
+    {
+        return DateTime.Now.ToString("yyyy-MM-dd");
+    }
     void GameOver()
     {
         SceneLoader.LoadSceneByIndex(2);   
     }
+
 }
